@@ -1,0 +1,18 @@
+Особые действия для Linux файлменеджера Thunar, которые реализуют возможность добавления описания к файлу.
+
+
+Добавить описание к файлу
+
+setfattr -n user.info -v "`xclip -out -selection clipboard`" %f && notify-send -t 3000 'Описание добавлено' ""
+
+
+
+Показать описание к файлу
+
+notify-send -t 30000 ' ' "`getfattr --only-values %f`"
+
+
+
+Удалить описание к файлу
+
+setfattr -x user.info %f && notify-send -t 3000 'Описание удалено'
